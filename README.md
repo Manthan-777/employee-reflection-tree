@@ -8,6 +8,7 @@ This project is a deterministic reflection tool that guides users through a stru
 - Axis 3: Perspective (self vs team)
 
 ## Files
-- /tree/reflection-tree.tsv → main tree
-- /transcripts → sample runs
-- write-up.md → design explanation
+- /tree/reflection-tree.tsv → main tree data  
+- /tree/tree-diagram.png → visual diagram of the tree  
+- /transcripts → sample runs  
+- write-up.md → design explanation  
