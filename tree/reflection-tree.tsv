@@ -1,0 +1,95 @@
+id	parentId	type	text	options	target	signal
+
+START	null	start	Let's take a moment to reflect on your day.			
+
+OPEN_Q	START	question	How would you describe your day overall?	Productive|Mixed|Challenging|Frustrating		
+
+OPEN_D1	OPEN_Q	decision			answer=A|B:OPEN_R_POS;answer=C|D:OPEN_R_NEG	
+
+OPEN_R_POS	OPEN_D1	reflection	It's great that you had a productive or mixed day. Let's dig into your performance.		
+
+OPEN_R_NEG	OPEN_D1	reflection	Tough days happen. Reflecting on them is the best way to reset and grow.		
+
+A1_Q1_POS	OPEN_R_POS	question	When reflecting on today, how did you interpret your performance?	I identified areas for improvement|I felt the outcome depended on others' contribution|I thought about how I could approach it differently next time|I felt external factors affected how things turned out		
+
+A1_Q1_NEG	OPEN_R_NEG	question	When reflecting on today, how did you interpret your performance?	I identified areas for improvement|I felt the outcome depended on others' contribution|I thought about how I could approach it differently next time|I felt external factors affected how things turned out		
+
+A1_D1_POS	A1_Q1_POS	decision			answer=A|C:A1_Q2_INT;answer=B|D:A1_Q2_EXT	
+
+A1_D1_NEG	A1_Q1_NEG	decision			answer=A|C:A1_Q2_INT;answer=B|D:A1_Q2_EXT	
+
+A1_Q2_INT	A1_D1_POS	question	When things didn't go as expected today, how did you respond?	I took steps to adjust and improve the situation|I actively worked on correcting the issue|I reflected before acting|I tried to improve gradually		axis1:internal
+
+A1_Q2_INT_B	A1_D1_NEG	question	When things didn't go as expected today, how did you respond?	I took steps to adjust and improve the situation|I actively worked on correcting the issue|I reflected before acting|I tried to improve gradually		axis1:internal
+
+A1_Q2_EXT	A1_D1_POS	question	When things didn't go as expected today, how did you respond?	I felt the outcome was influenced by factors outside my control|I felt others' response affected the outcome|I waited for things to improve|I disengaged from the situation		axis1:external
+
+A1_Q2_EXT_B	A1_D1_NEG	question	When things didn't go as expected today, how did you respond?	I felt the outcome was influenced by factors outside my control|I felt others' response affected the outcome|I waited for things to improve|I disengaged from the situation		axis1:external
+
+A1_R_INT	A1_Q2_INT	reflection	You reflected on your role in how things unfolded and looked for ways to respond and improve.		axis1:internal	
+
+A1_R_INT_B	A1_Q2_INT_B	reflection	You reflected on your role in how things unfolded and looked for ways to respond and improve.		axis1:internal	
+
+A1_R_EXT	A1_Q2_EXT	reflection	Your reflection highlights how external factors shaped your experience today, along with how you responded to them.		axis1:external	
+
+A1_R_EXT_B	A1_Q2_EXT_B	reflection	Your reflection highlights how external factors shaped your experience today, along with how you responded to them.		axis1:external	
+
+BRIDGE_1_INT	A1_R_INT	bridge	Now, let's look at how you contributed during the day.		
+
+BRIDGE_1_INT_B	A1_R_INT_B	bridge	Now, let's look at how you contributed during the day.		
+
+BRIDGE_1_EXT	A1_R_EXT	bridge	Now, let's look at how you contributed during the day.		
+
+BRIDGE_1_EXT_B	A1_R_EXT_B	bridge	Now, let's look at how you contributed during the day.		
+
+A2_Q1_INT	BRIDGE_1_INT	question	How did you approach your responsibilities today?	I focused on fulfilling my role effectively|I expected appreciation for my efforts|I tried to contribute beyond what was expected|I felt some team members did not contribute effectively		
+
+A2_Q1_INT_B	BRIDGE_1_INT_B	question	How did you approach your responsibilities today?	I focused on fulfilling my role effectively|I expected appreciation for my efforts|I tried to contribute beyond what was expected|I felt some team members did not contribute effectively		
+
+A2_Q1_EXT	BRIDGE_1_EXT	question	How did you approach your responsibilities today?	I focused on fulfilling my role effectively|I expected appreciation for my efforts|I tried to contribute beyond what was expected|I felt some team members did not contribute effectively		
+
+A2_Q1_EXT_B	BRIDGE_1_EXT_B	question	How did you approach your responsibilities today?	I focused on fulfilling my role effectively|I expected appreciation for my efforts|I tried to contribute beyond what was expected|I felt some team members did not contribute effectively		
+
+A2_D1_INT	A2_Q1_INT	decision			answer=A|C:A2_Q2_CONTRIB;answer=B|D:A2_Q2_ENTITLE	
+
+A2_D1_INT_B	A2_Q1_INT_B	decision			answer=A|C:A2_Q2_CONTRIB;answer=B|D:A2_Q2_ENTITLE	
+
+A2_D1_EXT	A2_Q1_EXT	decision			answer=A|C:A2_Q2_CONTRIB;answer=B|D:A2_Q2_ENTITLE	
+
+A2_D1_EXT_B	A2_Q1_EXT_B	decision			answer=A|C:A2_Q2_CONTRIB;answer=B|D:A2_Q2_ENTITLE	
+
+A2_Q2_CONTRIB	A2_D1_INT	question	How did you collaborate with others while working on your responsibilities today?	I actively supported others to help the team succeed|I collaborated beyond my own tasks|I shared knowledge to help others|I helped resolve team challenges		axis2:contribution
+
+A2_Q2_ENTITLE	A2_D1_INT	question	How did you collaborate with others while working on your responsibilities today?	I expected others to support me when needed|I felt others should have contributed more|I waited for others to take initiative|I focused only on my own tasks		axis2:entitlement
+
+A2_R_HIGH	A2_Q2_CONTRIB	reflection	You showed a tendency to contribute and support others as part of your work.		axis2:contribution	
+
+A2_R_LOW	A2_Q2_ENTITLE	reflection	Your experience reflects moments where expectations from others influenced your approach.		axis2:entitlement	
+
+BRIDGE_2_HIGH	A2_R_HIGH	bridge	Finally, let's reflect on how you viewed progress — for yourself and the team.		
+
+BRIDGE_2_LOW	A2_R_LOW	bridge	Finally, let's reflect on how you viewed progress — for yourself and the team.		
+
+A3_Q1_HIGH	BRIDGE_2_HIGH	question	When thinking about improvements, what did you focus on?	I focused on improving my own performance|I focused on how the team could improve|I felt I lagged behind others in certain areas|I thought about improving team coordination		
+
+A3_Q1_LOW	BRIDGE_2_LOW	question	When thinking about improvements, what did you focus on?	I focused on improving my own performance|I focused on how the team could improve|I felt I lagged behind others in certain areas|I thought about improving team coordination		
+
+A3_D1_HIGH	A3_Q1_HIGH	decision			answer=A|C:A3_Q2_SELF;answer=B|D:A3_Q2_TEAM	
+
+A3_D1_LOW	A3_Q1_LOW	decision			answer=A|C:A3_Q2_SELF;answer=B|D:A3_Q2_TEAM	
+
+A3_Q2_SELF	A3_D1_HIGH	question	How did you view today's achievements?	I focused on my individual contribution|I recognized growth in my own skills|I reflected on what I learned|I evaluated my progress		axis3:self
+
+A3_Q2_TEAM	A3_D1_HIGH	question	How did you view today's achievements?	I focused on the team's overall performance|I saw success as a collective team effort|I reflected on team outcomes|I valued coordination		axis3:team
+
+A3_R_SELF	A3_Q2_SELF	reflection	You focused on your own progress and personal development when reflecting on the day.		axis3:self	
+
+A3_R_TEAM	A3_Q2_TEAM	reflection	You reflected more on team outcomes and shared progress.		axis3:team	
+
+SUMMARY_SELF	A3_R_SELF	summary	You initially described your day as '{OPEN_Q.answer}'. Looking deeper, you leaned {axis1.dominant} in how you handled situations, {axis2.dominant} in how you contributed, and {axis3.dominant} in how you viewed progress.		
+
+SUMMARY_TEAM	A3_R_TEAM	summary	You initially described your day as '{OPEN_Q.answer}'. Looking deeper, you leaned {axis1.dominant} in how you handled situations, {axis2.dominant} in how you contributed, and {axis3.dominant} in how you viewed progress.		
+
+END_SELF	SUMMARY_SELF	end	That's your reflection for today. See you tomorrow.		
+
+END_TEAM	SUMMARY_TEAM	end	That's your reflection for today. See you tomorrow.		
